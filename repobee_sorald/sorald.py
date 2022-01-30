@@ -72,6 +72,8 @@ class SoraldHooks(plug.Plugin, plug.cli.CommandExtension):
             message = "Student has done not the assignment. Skipping ..."
             return plug.Result(PLUGIN_NAME, plug.Status.WARNING, message)
 
+        os.makedirs(self.sorald_stats_file_directory, exist_ok=True)
+
         path_to_stats_file = f"{self.sorald_stats_file_directory}/{repo.name}.json"
         command = (
             f"java -jar {self.sorald_jar_path} mine "
