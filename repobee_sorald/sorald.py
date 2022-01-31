@@ -101,8 +101,7 @@ class SoraldHooks(plug.Plugin, plug.cli.CommandExtension):
             mined_rules = json_object["minedRules"]
             number_of_violation = {}
             for violation in mined_rules:
-                if violation["ruleKey"] in HANDLED_RULES:
-                    number_of_violation[violation["ruleKey"]] = len(violation["warningLocations"])
+                number_of_violation[violation["ruleKey"]] = len(violation["warningLocations"])
             return number_of_violation
 
     @staticmethod
